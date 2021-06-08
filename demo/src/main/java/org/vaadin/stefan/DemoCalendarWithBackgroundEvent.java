@@ -2,11 +2,13 @@ package org.vaadin.stefan;
 
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
 import org.vaadin.stefan.fullcalendar.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+@Route(value = "calendar-with-background-event", layout = MainView.class)
 public class DemoCalendarWithBackgroundEvent extends VerticalLayout {
     private static final long serialVersionUID = 1L;
 

@@ -2,6 +2,7 @@ package org.vaadin.stefan;
 
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
 import elemental.json.JsonFactory;
 import elemental.json.impl.JreJsonFactory;
 import elemental.json.impl.JreJsonObject;
@@ -9,6 +10,9 @@ import org.vaadin.stefan.fullcalendar.CalendarView;
 import org.vaadin.stefan.fullcalendar.FullCalendar;
 import org.vaadin.stefan.fullcalendar.FullCalendarBuilder;
 
+import java.time.LocalDate;
+
+@Route(value = "day-grid-week-with-six-weeks", layout = MainView.class)
 public class DemoDayGridWeekWithSixWeeks extends VerticalLayout {
     private static final long serialVersionUID = 1L;
 
@@ -21,6 +25,8 @@ public class DemoDayGridWeekWithSixWeeks extends VerticalLayout {
         FullCalendar calendar = FullCalendarBuilder.create().withInitialOptions(calendarView.getInitialOptions()).build();
         calendar.setHeight(500);
         calendar.changeView(calendarView);
+        // Set a custom start date
+        calendar.gotoDate(LocalDate.now());
         add(new H1("DayGridWeek calendar with six weeks"), calendar);
         setSizeFull();
     }

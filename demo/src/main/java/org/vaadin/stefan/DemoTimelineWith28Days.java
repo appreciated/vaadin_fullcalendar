@@ -2,6 +2,7 @@ package org.vaadin.stefan;
 
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
 import elemental.json.JsonFactory;
 import elemental.json.impl.JreJsonFactory;
 import elemental.json.impl.JreJsonObject;
@@ -10,6 +11,9 @@ import org.vaadin.stefan.fullcalendar.FullCalendar;
 import org.vaadin.stefan.fullcalendar.FullCalendarBuilder;
 import org.vaadin.stefan.fullcalendar.FullCalendarScheduler;
 
+import java.time.LocalDate;
+
+@Route(value = "timeline-with-28-days", layout = MainView.class)
 public class DemoTimelineWith28Days extends VerticalLayout {
     private static final long serialVersionUID = 1L;
 
@@ -23,6 +27,8 @@ public class DemoTimelineWith28Days extends VerticalLayout {
         ((FullCalendarScheduler) calendar).setSchedulerLicenseKey("GPL-My-Project-Is-Open-Source");
         calendar.setHeight(500);
         calendar.changeView(calendarView);
+        // Set a custom start date
+        calendar.gotoDate(LocalDate.now());
         add(new H1("Timeline calendar with 28 days"), calendar);
         setSizeFull();
     }
